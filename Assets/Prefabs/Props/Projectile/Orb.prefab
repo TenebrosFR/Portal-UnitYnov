@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030a793cdf11af248bfe5067d04b6320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 30
+  Speed: 15
+  lifetime: 10
   rb: {fileID: 3685286550413827385}
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
-  direction: {x: 0, y: 0, z: 0}
 --- !u!135 &7269056968612428268
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,8 +125,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7269056968612428267}
   serializedVersion: 2
-  m_Mass: 50
-  m_Drag: 1
+  m_Mass: 0.1
+  m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
