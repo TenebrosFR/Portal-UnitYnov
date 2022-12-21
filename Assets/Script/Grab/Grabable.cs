@@ -12,4 +12,7 @@ public class Grabable : IsInteractable
         player.GetComponent<PlayerData>().objectGrabbed = null;
         rb.useGravity = true;
     }
+    private void Start() {
+        
+    }
 }

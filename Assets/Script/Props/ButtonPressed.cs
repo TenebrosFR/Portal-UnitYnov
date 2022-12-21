@@ -2,42 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPressed : MonoBehaviour {
-
+public class ButtonPressed : IsInteractable
+{
+    [SerializeField] public IsInteractable Script;
     [SerializeField] float pressedAnimTime;
-    [SerializeField] DoSomething Script;
-    List<Collider> objectsInside = new List<Collider>();
+    [SerializeField] float pressedDuration;
+    [SerializeField] float distance;
     Vector3 target;
     Vector3 originalPosition;
     private void Start() {
         originalPosition = transform.localPosition;
     }
-    private void OnTriggerEnter(Collider other) {
-        objectsInside.Add(other);
-        if(objectsInside.Count == 1)Pressed();
-    }
-    private void OnTriggerExit(Collider other) {
-        objectsInside.Remove(other);
-        if (objectsInside.Count <= 0) UnPressed();
-    }
-    void Pressed() {
-        target = originalPosition + (Vector3.down * 1.2f);
-        StartCoroutine(HorizontalMove(true));
+    public override void Do(GameObject player, Vector3 lookingDirection) {
+        if (transform.localPosition != originalPosition) return; 
+        target = originalPosition + (-transform.up * distance);
+        StartCoroutine(Move());
     }
 
-    void UnPressed() {
-        target = originalPosition;
-        StartCoroutine(HorizontalMove(false));
+    public override void UnDo(GameObject player, Vector3 lookingDirection) {
     }
-
-    IEnumerator HorizontalMove(bool started) {
+    IEnumerator Move() {
         float startTime = Time.time;
         while (Time.time < startTime + pressedAnimTime) {
             transform.localPosition = Vector3.Lerp(transform.localPosition, target, (Time.time - startTime) / pressedAnimTime);
             yield return null;
         }
         transform.localPosition = target;
-        if (Script && started) Script.Do(gameObject);
-        else if (Script && !started) Script.UnDo(gameObject);
+        if(Script)Script.Do(gameObject,Vector3.zero);
+        yield return new WaitForSeconds(pressedDuration);
+        target = originalPosition;
+        startTime = Time.time;
+        while (Time.time < startTime + pressedAnimTime) {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, target, (Time.time - startTime) / pressedAnimTime);
+            yield return null;
+        }
+        if(Script)Script.UnDo(gameObject, Vector3.zero);
     }
 }
+

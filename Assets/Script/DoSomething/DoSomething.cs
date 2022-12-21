@@ -1,6 +1,0 @@
-﻿using UnityEngine;
-
-public abstract class DoSomething : MonoBehaviour {
-    public abstract void Do(GameObject obj);
-    public abstract void UnDo(GameObject obj);
-}
