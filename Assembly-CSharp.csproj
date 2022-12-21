@@ -58,19 +58,22 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Player\GravityGun.cs" />
     <Compile Include="Assets\Script\Interaction\IsInteractable.cs" />
-    <Compile Include="Assets\Script\Interaction\Interraction.cs" />
+    <Compile Include="Assets\Script\Props\FollowPlayer.cs" />
+    <Compile Include="Assets\Script\Player\Actions\Interraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerData.cs" />
+    <Compile Include="Assets\Script\Props\AbsorbedOrb.cs" />
     <Compile Include="Assets\Script\Player\Movements\PlayerRotation.cs" />
     <Compile Include="Assets\Script\Props\ButtonPressed.cs" />
-    <Compile Include="Assets\Script\Player\Movements\PlayerGravity.cs" />
+    <Compile Include="Assets\Script\Props\GroundButtonPressed.cs" />
     <Compile Include="Assets\Script\Utils\StaticMethod.cs" />
     <Compile Include="Assets\Script\Player\Movements\PlayerMovement.cs" />
     <Compile Include="Assets\Script\Interaction\Interactable.cs" />
+    <Compile Include="Assets\Script\Props\Elevator.cs" />
     <Compile Include="Assets\Script\Grab\Grabable1.cs" />
-    <Compile Include="Assets\Script\Player\Actions\Shoot.cs" />
+    <Compile Include="Assets\Script\Player\Actions\PlayerShoot.cs" />
     <Compile Include="Assets\Script\Grab\Grabable.cs" />
-    <Compile Include="Assets\Script\DoSomething\DoSomething.cs" />
     <Compile Include="Assets\Script\Props\Orb.cs" />
+    <Compile Include="Assets\Script\Props\Shoot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
