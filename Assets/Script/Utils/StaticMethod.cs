@@ -15,13 +15,10 @@ namespace utils {
         public static Vector3 UpdateAxis(this Vector3 movement, float newValue, VectorAxis axis) {
             return new Vector3(axis == VectorAxis.X ? newValue : movement.x, axis == VectorAxis.Y ? newValue : movement.y, axis == VectorAxis.Z ? newValue : movement.z);
         }
-        public static Vector3 Add(this Vector3 movement, Vector3 direction) {
-            return new Vector3(movement.x+direction.x,movement.y+direction.y,movement.z+direction.z);
-        }   
         #endregion
         #region Collider
         public static bool IsGrounded(this Collider obj) {
-            return Physics.CheckCapsule(obj.bounds.center, new Vector3(obj.bounds.center.x, obj.bounds.min.y - 0.1f, obj.bounds.center.z), 0.18f, LayerMask.GetMask("Ground"));
+            return Physics.CheckSphere(obj.bounds.min, .2f, LayerMask.GetMask("Ground"));
         }
         #endregion
     }

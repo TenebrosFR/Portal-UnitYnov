@@ -8,15 +8,15 @@ public class Elevator : IsInteractable
     [SerializeField] Rigidbody rb;
     [SerializeField] float Height = 5.1f;
     [SerializeField] float Speed = 0.1f;
-    Vector3 originalPosition;
-    Vector3 target;
+    [SerializeField] Vector3 originalPosition;
+    [SerializeField] Vector3 target;
     private void Start() {
         originalPosition = transform.position;
-        target = transform.position.Add(Vector3.up * Height);
+        target = transform.position + (Vector3.up * Height);
     }
     public override void Do(GameObject player, Vector3 lookingDirection) {
         if (transform.position != originalPosition) return;
-        target = transform.position.Add(Vector3.up * Height);
+        target = transform.position + (Vector3.up * Height);
         StartCoroutine(Move(1));
     }
 

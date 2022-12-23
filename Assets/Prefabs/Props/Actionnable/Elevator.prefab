@@ -170,6 +170,8 @@ MonoBehaviour:
   rb: {fileID: 8495889507939607498}
   Height: 5.1
   Speed: 0.1
+  originalPosition: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
 --- !u!54 &8495889507939607498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -638,7 +640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2582122617161343182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +676,7 @@ GameObject:
   - component: {fileID: 2025017598992624039}
   - component: {fileID: 2961816946149899831}
   - component: {fileID: 4241601471377844093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piston
   m_TagString: Untagged
   m_Icon: {fileID: 0}

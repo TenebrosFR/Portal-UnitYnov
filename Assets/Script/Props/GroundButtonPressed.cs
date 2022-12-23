@@ -31,13 +31,13 @@ public class GroundButtonPressed : MonoBehaviour {
     }
 
     IEnumerator HorizontalMove(bool started) {
+        if (Script && started) Script.Do(gameObject,Vector3.zero);
+        else if (Script && !started) Script.UnDo(gameObject,Vector3.zero);
         float startTime = Time.time;
         while (Time.time < startTime + pressedAnimTime) {
             ButtonToMove.transform.localPosition = Vector3.Lerp(ButtonToMove.transform.localPosition, target, (Time.time - startTime) / pressedAnimTime);
             yield return null;
         }
         ButtonToMove.transform.localPosition = target;
-        if (Script && started) Script.Do(gameObject,Vector3.zero);
-        else if (Script && !started) Script.UnDo(gameObject,Vector3.zero);
     }
 }
