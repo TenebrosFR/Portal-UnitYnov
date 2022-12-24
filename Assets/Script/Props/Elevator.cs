@@ -4,33 +4,29 @@ using utils;
 
 public class Elevator : IsInteractable
 {
-    [SerializeField] Collider Piston;
+    [SerializeField] Transform Piston;
     [SerializeField] Rigidbody rb;
     [SerializeField] float Height = 5.1f;
     [SerializeField] float Speed = 0.1f;
-    [SerializeField] Vector3 originalPosition;
-    [SerializeField] Vector3 target;
-    private void Start() {
-        originalPosition = transform.position;
-        target = transform.position + (Vector3.up * Height);
-    }
+    float targetHeight = 1;
     public override void Do(GameObject player, Vector3 lookingDirection) {
-        if (transform.position != originalPosition) return;
-        target = transform.position + (Vector3.up * Height);
+        if (Piston.localScale.y != targetHeight) return;
+        targetHeight = Height;
         CurrentRoutine.ReloadCoroutine(Move(1));
     }
 
     public override void UnDo(GameObject player, Vector3 lookingDirection) {
-        if (transform.position != target) return;
-        target = originalPosition;
+        if (Piston.localScale.y != targetHeight) return;
+        targetHeight = 1;
         CurrentRoutine.ReloadCoroutine(Move(-1));
     }
     IEnumerator Move(int orientation) {
-        while(transform.position != target) {
-            Piston.transform.localScale = Piston.transform.localScale.UpdateAxis(Piston.transform.localScale.y + ( Speed * orientation), VectorAxis.Y);
-            rb.MovePosition(transform.position.UpdateAxis((Piston.bounds.size.y/2)-1.35f, VectorAxis.Y));
-            if (orientation == 1 && transform.position.y > target.y) transform.position = target;
-            if (orientation == -1 && transform.position.y < target.y) transform.position = target;
+        while(Piston.localScale.y != targetHeight) {
+            if (orientation == 1 && Piston.localScale.y > targetHeight) Piston.localScale = Piston.localScale.UpdateAxis(Height, VectorAxis.Y);
+            else if (orientation == -1 && Piston.localScale.y < targetHeight) Piston.localScale = Piston.localScale.UpdateAxis(1, VectorAxis.Y);
+            else Piston.localScale = Piston.localScale.UpdateAxis(Piston.localScale.y + ( Speed * orientation), VectorAxis.Y);
+
+            rb.MovePosition(transform.position.UpdateAxis((Piston.localScale.y)-1.5f, VectorAxis.Y));
             yield return new WaitForFixedUpdate();
         }
     }

@@ -5793,6 +5793,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2119430206667819333, guid: 798693df23cc503489778debf6bb89c0, type: 3}
+      propertyPath: m_Drag
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119430206667819333, guid: 798693df23cc503489778debf6bb89c0, type: 3}
       propertyPath: m_Mass
       value: 100
       objectReference: {fileID: 0}
@@ -5803,6 +5807,22 @@ PrefabInstance:
     - target: {fileID: 3753678731692614473, guid: 798693df23cc503489778debf6bb89c0, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926164195138131234, guid: 798693df23cc503489778debf6bb89c0, type: 3}
+      propertyPath: Speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926164195138131234, guid: 798693df23cc503489778debf6bb89c0, type: 3}
+      propertyPath: JumpSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926164195138131234, guid: 798693df23cc503489778debf6bb89c0, type: 3}
+      propertyPath: JumpDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926164195138131234, guid: 798693df23cc503489778debf6bb89c0, type: 3}
+      propertyPath: movementForce
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 150537125594147158, guid: 798693df23cc503489778debf6bb89c0, type: 3}
@@ -8476,7 +8496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582122617161343182, guid: 01722f7c5f812d34889ce6ac088efa51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2582122617161343182, guid: 01722f7c5f812d34889ce6ac088efa51, type: 3}
       propertyPath: m_LocalPosition.z
