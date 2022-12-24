@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using utils;
 
 public class ButtonPressed : IsInteractable
 {
@@ -16,7 +17,7 @@ public class ButtonPressed : IsInteractable
     public override void Do(GameObject player, Vector3 lookingDirection) {
         if (transform.localPosition != originalPosition) return; 
         target = originalPosition + (-transform.up * distance);
-        StartCoroutine(Move());
+        CurrentRoutine.ReloadCoroutine(Move());
     }
 
     public override void UnDo(GameObject player, Vector3 lookingDirection) {

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using utils;
 
-public class GroundButtonPressed : MonoBehaviour {
+public class GroundButtonPressed : IsInteractable {
     [SerializeField] GameObject ButtonToMove;
     [SerializeField] float pressedAnimTime;
     [SerializeField] IsInteractable Script;
@@ -13,21 +14,21 @@ public class GroundButtonPressed : MonoBehaviour {
         originalPosition = ButtonToMove.transform.localPosition;
     }
     private void OnTriggerEnter(Collider other) {
-        if (objectsInside.Count == 0) Pressed();
+        if (objectsInside.Count == 0) Do(gameObject,Vector3.zero);
         objectsInside.Add(other);
+    }
+    public override void Do(GameObject player, Vector3 lookingDirection) {
+        target = originalPosition + (Vector3.down * 1.2f);
+        CurrentRoutine.ReloadCoroutine(HorizontalMove(true));
     }
     private void OnTriggerExit(Collider other) {
         objectsInside.Remove(other);
-        if (objectsInside.Count <= 0) UnPressed();
-    }
-    void Pressed() {
-        target = originalPosition + (Vector3.down * 1.2f);
-        StartCoroutine(HorizontalMove(true));
+        if (objectsInside.Count <= 0) UnDo(gameObject, Vector3.zero);
     }
 
-    void UnPressed() {
+    public override void UnDo(GameObject player, Vector3 lookingDirection) {
         target = originalPosition;
-        StartCoroutine(HorizontalMove(false));
+        CurrentRoutine.ReloadCoroutine(HorizontalMove(false));
     }
 
     IEnumerator HorizontalMove(bool started) {

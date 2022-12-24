@@ -17,12 +17,13 @@ public class Elevator : IsInteractable
     public override void Do(GameObject player, Vector3 lookingDirection) {
         if (transform.position != originalPosition) return;
         target = transform.position + (Vector3.up * Height);
-        StartCoroutine(Move(1));
+        CurrentRoutine.ReloadCoroutine(Move(1));
     }
 
     public override void UnDo(GameObject player, Vector3 lookingDirection) {
+        if (transform.position != target) return;
         target = originalPosition;
-        StartCoroutine(Move(-1));
+        CurrentRoutine.ReloadCoroutine(Move(-1));
     }
     IEnumerator Move(int orientation) {
         while(transform.position != target) {
