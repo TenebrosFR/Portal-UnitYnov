@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2488629863810005291}
   - component: {fileID: 2136639364249296578}
   - component: {fileID: 7926164195138131234}
-  - component: {fileID: 3191949016818272106}
   - component: {fileID: 5424433727660965028}
   - component: {fileID: 948288970924707673}
   - component: {fileID: 2711665880379333751}
@@ -151,21 +150,6 @@ MonoBehaviour:
   movementForce: 1
   JumpSpeed: 1
   JumpDuration: 1
---- !u!114 &3191949016818272106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3753678731692614473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4496362cae7614e98875b612ec6e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider: {fileID: 4892817805726817697}
-  bulletPrefab: {fileID: 7594128927309094605, guid: 20efeee000bf3ff4c96f4b0ca4c9c941, type: 3}
-  cam: {fileID: 7361711827772588467}
 --- !u!114 &5424433727660965028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +193,7 @@ MonoBehaviour:
     m_ActionName: Controls/Player[/Keyboard/space,/Keyboard/ctrl,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3191949016818272106}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shoot, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
@@ -303,6 +287,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2d9e3da6-5e65-47cd-8218-5631c02fe334
     m_ActionName: Controls/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PortalPlacement, Assembly-CSharp
+        m_MethodName: OnPortalShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 54516b8c-feee-49f7-9fcf-55677548b93b
+    m_ActionName: Controls/ShootPortal[/Mouse/leftButton,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
