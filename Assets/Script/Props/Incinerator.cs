@@ -22,6 +22,8 @@ public class Incinerator : IsInteractable {
         door.transform.localScale = Vector3.one * target;
         if (value == 0) value = 1;
         else value = 0;
+        CurrentRoutine = null;
+
     }
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.layer == Mathf.Log(movableLayer,2)) Destroy(other.gameObject);

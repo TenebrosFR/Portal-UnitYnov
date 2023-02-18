@@ -24,6 +24,6 @@ public class Shoot : MonoBehaviour
         light.color = Color.yellow;
         preparingToShoot = false;
         currentOrb = Instantiate(orbPrefab, light.transform.position, Quaternion.identity);
-        currentOrb.Shoot(Vector3.forward);
+        currentOrb.Shoot(Vector3.right);
     }
 }

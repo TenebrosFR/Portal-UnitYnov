@@ -17,7 +17,7 @@ public class ButtonPressed : IsInteractable
     public override void Do(GameObject player, Vector3 lookingDirection) {
         if (transform.localPosition != originalPosition) return; 
         target = originalPosition + (-transform.up * distance);
-        CurrentRoutine.ReloadCoroutine(Move());
+        CurrentRoutine = CurrentRoutine.ReloadCoroutine(Move());
     }
 
     public override void UnDo(GameObject player, Vector3 lookingDirection) {
@@ -38,6 +38,8 @@ public class ButtonPressed : IsInteractable
             yield return null;
         }
         if(Script)Script.UnDo(gameObject, Vector3.zero);
+        CurrentRoutine = null;
+
     }
 }
 

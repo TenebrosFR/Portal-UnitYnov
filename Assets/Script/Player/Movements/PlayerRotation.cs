@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using utils;
 
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] GameObject PlayerBody;
+    [SerializeField] Rigidbody rb;
     [SerializeField] Camera cam;
     [Range(0.1f, 9f)][SerializeField] float sensivity = 2f;
     [Range(-180, 180)][SerializeField] float maxY;
     [Range(-180, 180)][SerializeField] float minY;  
     //Conversion d'une valeur input d'axis en °
     private float convertorRotate = 0.04f;
-    Vector3 rotation = Vector3.zero;
+    public Vector3 rotation = Vector3.zero;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Confined;
@@ -19,7 +22,7 @@ public class PlayerRotation : MonoBehaviour
     private void FixedUpdate() {
         var timeSensivity = sensivity * Time.fixedDeltaTime;
         PlayerBody.transform.rotation = Quaternion.Euler(0,rotation.y * timeSensivity,0);
-        cam.transform.localRotation = Quaternion.Euler(rotation.x * timeSensivity,2, 0);
+        cam.transform.localRotation = Quaternion.Euler(rotation.x * timeSensivity, 2, 0);
     }
     public void OnRotateY(InputAction.CallbackContext context) {
         rotation.y += context.ReadValue<float>();
@@ -27,5 +30,11 @@ public class PlayerRotation : MonoBehaviour
     public void OnRotateX(InputAction.CallbackContext context) {
         rotation.x -= context.ReadValue<float>();
         rotation.x = Mathf.Clamp(rotation.x, minY * 1/convertorRotate, maxY * 1 / convertorRotate);
+    }
+
+    public void PortalWantRotation(Transform portalExit, Transform portalEntrance) {
+        Vector3 exitDirection = portalExit.rotation * Quaternion.Inverse(portalEntrance.rotation) * transform.forward;
+        Debug.Log(Mathf.Atan2(exitDirection.y, exitDirection.x) * Mathf.Rad2Deg);
+        transform.eulerAngles = transform.eulerAngles.UpdateAxis(Mathf.Atan2(exitDirection.y, exitDirection.x) * Mathf.Rad2Deg, VectorAxis.Y);
     }
 }

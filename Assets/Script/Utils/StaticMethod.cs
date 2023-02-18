@@ -7,6 +7,12 @@ namespace utils {
         Y,
         Z
     }
+    public enum QuaternionAxis {
+        X,
+        Y,
+        Z,
+        W
+    }
     public static partial class StaticMethod {
         public static MonoBehave MonoBehave;
         #region Transform
@@ -53,6 +59,9 @@ namespace utils {
         }
         public static Quaternion Add(this Quaternion first, Quaternion second) {
             return new Quaternion(first.x + second.x, first.y + second.y, first.z + second.z, first.w);
+        }
+        public static Quaternion Update(this Quaternion inQuaternion, float newValue, QuaternionAxis axis) {
+            return new Quaternion(axis == QuaternionAxis.X ? newValue : inQuaternion.x, axis == QuaternionAxis.Y ? newValue : inQuaternion.y, axis == QuaternionAxis.Z ? newValue : inQuaternion.z, axis == QuaternionAxis.W ? newValue : inQuaternion.w);
         }
         #endregion
     }

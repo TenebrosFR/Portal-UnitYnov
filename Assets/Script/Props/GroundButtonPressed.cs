@@ -19,7 +19,7 @@ public class GroundButtonPressed : IsInteractable {
     }
     public override void Do(GameObject player, Vector3 lookingDirection) {
         target = originalPosition + (Vector3.down * 1.2f);
-        CurrentRoutine.ReloadCoroutine(HorizontalMove(true));
+        CurrentRoutine = CurrentRoutine.ReloadCoroutine(HorizontalMove(true));
     }
     private void OnTriggerExit(Collider other) {
         objectsInside.Remove(other);
@@ -28,7 +28,7 @@ public class GroundButtonPressed : IsInteractable {
 
     public override void UnDo(GameObject player, Vector3 lookingDirection) {
         target = originalPosition;
-        CurrentRoutine.ReloadCoroutine(HorizontalMove(false));
+        CurrentRoutine = CurrentRoutine.ReloadCoroutine(HorizontalMove(false));
     }
 
     IEnumerator HorizontalMove(bool started) {
@@ -40,5 +40,7 @@ public class GroundButtonPressed : IsInteractable {
             yield return null;
         }
         ButtonToMove.transform.localPosition = target;
+        CurrentRoutine = null;
+
     }
 }

@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         var forwardMovement = (transform.forward * currentDirection.z).normalized;
         var sideMovement = (transform.right * currentDirection.x).normalized;
         rb.AddForce((forwardMovement + sideMovement).Restricted(false,true).normalized * Time.fixedDeltaTime * movementForce, ForceMode.VelocityChange);
-        if(isJumping)   rb.AddForce(Vector3.up * JumpSpeed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        if(isJumping)   rb.AddForce(Vector3.up * JumpSpeed * Time.fixedDeltaTime, ForceMode.Force);
         isGrounded = false;
     }
     void OnCollisionStay(Collision collision) {

@@ -17,7 +17,7 @@ public class CubeSpawner : IsInteractable
         if (!continuousDo && door.transform.localScale == Vector3.zero) NewTarget(1);
     }
     private void NewTarget(int val) {
-        CurrentRoutine.ReloadCoroutine(OpenOrCloseDoor(val));
+        CurrentRoutine = CurrentRoutine.ReloadCoroutine(OpenOrCloseDoor(val));
     }
     private IEnumerator OpenOrCloseDoor(int target) {
         var direction = target == 0 ? -1 : 1;
@@ -27,6 +27,8 @@ public class CubeSpawner : IsInteractable
         }
         while ( (direction == 1 && door.transform.localScale.x <= 1) || (direction == -1 && door.transform.localScale.x >= 0));
         door.transform.localScale = Vector3.one * target;
+        CurrentRoutine = null;
+
     }
     void FixedUpdate() {
         if (!cube) cube = Instantiate(cubePrefab, spawnLocation.position,Quaternion.identity);
