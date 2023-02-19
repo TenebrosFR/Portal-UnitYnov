@@ -1,8 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Incinerator : IsInteractable {
+    [SerializeField] IsInteractable Script;
+    [SerializeField] GameObject thingToDestroyForDo;
     [SerializeField] LayerMask movableLayer;
     [SerializeField] Transform door;
     [SerializeField] float doorSpeed = 0.1f;
@@ -26,6 +28,8 @@ public class Incinerator : IsInteractable {
 
     }
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.layer == Mathf.Log(movableLayer,2)) Destroy(other.gameObject);
+        if (other.gameObject.layer != Mathf.Log(movableLayer, 2)) return;
+        if (thingToDestroyForDo != PrefabUtility.GetCorrespondingObjectFromSource(other.gameObject) && Script) Script.Do(gameObject, Vector3.zero);
+        Destroy(other.gameObject);
     }
 }

@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using utils;
+using UnityEngine.UI;
 
 public class PlayerPortal : MonoBehaviour
 {
-    [SerializeField] Portaltemp[] Portals;
+    [SerializeField] public Portaltemp[] Portals;
     [SerializeField] LayerMask TargetPortal;
     [SerializeField] Camera aim;
+    [SerializeField] public Image[] images;
     public void OnShootPortal(InputAction.CallbackContext context) {
         if (!context.performed) return;
         if (Physics.Raycast(aim.transform.position, aim.transform.forward, out var objectHit)) {
@@ -16,6 +17,7 @@ public class PlayerPortal : MonoBehaviour
 
     private void SpawnPortal(int index, RaycastHit hit) {
         var center = hit.collider.bounds.center;
-        Portals[index].transform.SetPositionAndRotation( new Vector3(center.x,center.y - 0.5f,hit.point.z), Quaternion.LookRotation(hit.normal));
+        Portals[index].transform.SetPositionAndRotation( new Vector3(center.x,center.y - 0.5f,hit.point.z), hit.transform.rotation);
+        if (!images[index].enabled) images[index].enabled = true;
     }
 }

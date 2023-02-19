@@ -15,6 +15,7 @@ public class AbsorbedOrb : MonoBehaviour
 
         light.color = Color.blue;
         if(Script && Script.CurrentRoutine == null) Script.Do(other.gameObject,Vector3.zero);
+        other.GetComponent<Orb>().parent.validated = true;
         Destroy(other.gameObject);
     }
 

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Diagnostics.Contracts;
-using TMPro;
+﻿using System.Collections;
 using UnityEngine;
-using utils;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Orb  : MonoBehaviour { 
 
@@ -12,7 +7,9 @@ public class Orb  : MonoBehaviour {
     [SerializeField] public float lifetime = 10f;
     [SerializeField] public Rigidbody rb;
     [SerializeField] LayerMask PlayerLayer;
-    public void Shoot(Vector3 direction) {
+    public Shoot parent;
+    public void Shoot(Vector3 direction, Shoot creator) {
+        parent = creator;
         rb.velocity = direction * Speed;
         StartCoroutine(DieInSeconds());
     }
@@ -22,12 +19,15 @@ public class Orb  : MonoBehaviour {
         Destroy(gameObject);
     }
     void FixedUpdate() {
-        if(rb.velocity.magnitude != Speed) rb.velocity = rb.velocity.normalized * Speed;
+        //if(rb.velocity.magnitude != Speed) rb.velocity = rb.velocity.normalized * Speed;
     }
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.layer == Mathf.Log(PlayerLayer.value, 2)) {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
+        else {
+            rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal).normalized * Speed;
         }
     }
 }

@@ -10,7 +10,7 @@ public class WallSurface : MonoBehaviour
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.tag == "Portal") SwitchEnabled(false, col);
     }
-    private void OnTriggeExit(Collider col) {
+    private void OnTriggerExit(Collider col) {
         if (col.gameObject.tag == "Portal") SwitchEnabled(true, col);
     }
 

@@ -61,6 +61,7 @@
     <Compile Include="Assets\Script\Portal\PortalTeleport.cs" />
     <Compile Include="Assets\Script\Props\WallSurface.cs" />
     <Compile Include="Assets\Script\Props\FollowPlayer.cs" />
+    <Compile Include="Assets\Script\GameManager\Reinitialisator.cs" />
     <Compile Include="Assets\Script\Player\Actions\Interraction.cs" />
     <Compile Include="Assets\Script\Utils\MonoBehave.cs" />
     <Compile Include="Assets\Script\Player\PlayerData.cs" />
@@ -69,7 +70,9 @@
     <Compile Include="Assets\Prefabs\FailedPortal\Nouveau dossier\WhatPortalSee.cs" />
     <Compile Include="Assets\Script\Portal\PortalCamera.cs" />
     <Compile Include="Assets\Script\Player\Actions\PlayerPortal.cs" />
+    <Compile Include="Assets\Script\Props\Door.cs" />
     <Compile Include="Assets\Prefabs\ThirdTry\PortalRender.cs" />
+    <Compile Include="Assets\Script\GameManager\Destroyer.cs" />
     <Compile Include="Assets\Script\Player\Movements\PlayerRotation.cs" />
     <Compile Include="Assets\Script\Props\ButtonPressed.cs" />
     <Compile Include="Assets\Script\Props\GroundButtonPressed.cs" />
