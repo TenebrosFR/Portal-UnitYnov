@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class Portaltemp : MonoBehaviour
 {
     [SerializeField] Portaltemp other;
@@ -10,8 +9,9 @@ public class Portaltemp : MonoBehaviour
             col.transform.parent.position = other.transform.position + other.transform.forward;
             col.transform.parent.GetComponent<PlayerRotation>().PortalWantRotation(other.transform,transform);
         }
-        else {
+        else if(col.gameObject.tag != "Immovable"){
             col.gameObject.transform.SetPositionAndRotation(other.transform.position + other.transform.forward, Quaternion.LookRotation(other.transform.forward));
+            col.GetComponent<Rigidbody>().velocity = other.transform.forward;
         }
     }
 }

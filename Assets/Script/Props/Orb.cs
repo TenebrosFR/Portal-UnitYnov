@@ -19,16 +19,7 @@ public class Orb  : MonoBehaviour {
         Destroy(gameObject);
     }
     void FixedUpdate() {
-        //if(rb.velocity.magnitude != Speed) rb.velocity = rb.velocity.normalized * Speed;
-    }
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.layer == Mathf.Log(PlayerLayer.value, 2)) {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        else {
-            rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal).normalized * Speed;
-        }
+        if(rb.velocity.magnitude != Speed) rb.velocity = rb.velocity.normalized * Speed;
     }
 }
 

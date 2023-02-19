@@ -21991,7 +21991,7 @@ MonoBehaviour:
   Right: {fileID: 4118297120821323936}
   LeftClose: {fileID: 4465091810780990502}
   RightClose: {fileID: 1250107158875137892}
-  moveSpeed: 0.25
+  moveSpeed: 0.1
   LeftDoor: {fileID: 6033167757811012640}
   RightDoor: {fileID: 4054966898399156755}
 --- !u!1001 &235159160031858025
