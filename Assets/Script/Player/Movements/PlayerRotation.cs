@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using utils;
 
@@ -26,6 +25,7 @@ public class PlayerRotation : MonoBehaviour
     }
     public void OnRotateY(InputAction.CallbackContext context) {
         rotation.y += context.ReadValue<float>();
+        if (Mathf.Abs(rotation.y) > 9000) rotation.y = 0;
     }
     public void OnRotateX(InputAction.CallbackContext context) {
         rotation.x -= context.ReadValue<float>();
@@ -33,8 +33,8 @@ public class PlayerRotation : MonoBehaviour
     }
 
     public void PortalWantRotation(Transform portalExit, Transform portalEntrance) {
-        Vector3 exitDirection = portalExit.rotation * Quaternion.Inverse(portalEntrance.rotation) * transform.forward;
-        Debug.Log(Mathf.Atan2(exitDirection.y, exitDirection.x) * Mathf.Rad2Deg);
-        transform.eulerAngles = transform.eulerAngles.UpdateAxis(Mathf.Atan2(exitDirection.y, exitDirection.x) * Mathf.Rad2Deg, VectorAxis.Y);
+        transform.rotation = (portalExit.transform.localToWorldMatrix * transform.worldToLocalMatrix * portalEntrance.localToWorldMatrix).rotation * Quaternion.Inverse(transform.rotation) * portalEntrance.rotation;
+        rb.velocity = rb.velocity.magnitude * transform.forward;
+        rotation.y = transform.eulerAngles.y * (9000 / 360);
     }
 }
