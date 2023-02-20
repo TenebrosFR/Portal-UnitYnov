@@ -8,6 +8,7 @@ TagManager:
   - Immovable
   - Portal
   - PlayerCenter
+  - Cube
   layers:
   - Default
   - TransparentFX

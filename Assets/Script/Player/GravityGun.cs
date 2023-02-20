@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using utils;
 
 public class GravityGun : MonoBehaviour {
     [SerializeField] PlayerData Data;

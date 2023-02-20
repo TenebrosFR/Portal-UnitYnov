@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grabable : IsInteractable
@@ -11,8 +10,5 @@ public class Grabable : IsInteractable
     public override void UnDo(GameObject player, Vector3 lookingDirection) {
         player.GetComponent<PlayerData>().objectGrabbed = null;
         rb.useGravity = true;
-    }
-    private void Start() {
-        
     }
 }

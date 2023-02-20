@@ -58,43 +58,34 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Player\GravityGun.cs" />
     <Compile Include="Assets\Script\Interaction\IsInteractable.cs" />
-    <Compile Include="Assets\Script\Portal\PortalTeleport.cs" />
     <Compile Include="Assets\Script\Props\WallSurface.cs" />
     <Compile Include="Assets\Script\Props\FollowPlayer.cs" />
     <Compile Include="Assets\Script\GameManager\Reinitialisator.cs" />
     <Compile Include="Assets\Script\Player\Actions\Interraction.cs" />
     <Compile Include="Assets\Script\Utils\MonoBehave.cs" />
     <Compile Include="Assets\Script\Player\PlayerData.cs" />
-    <Compile Include="Assets\Portaltemp.cs" />
+    <Compile Include="Assets\Script\Portal\Portaltemp.cs" />
     <Compile Include="Assets\Script\Props\AbsorbedOrb.cs" />
-    <Compile Include="Assets\Prefabs\FailedPortal\Nouveau dossier\WhatPortalSee.cs" />
-    <Compile Include="Assets\Script\Portal\PortalCamera.cs" />
     <Compile Include="Assets\Script\Player\Actions\PlayerPortal.cs" />
     <Compile Include="Assets\Script\Props\Door.cs" />
-    <Compile Include="Assets\Prefabs\ThirdTry\PortalRender.cs" />
     <Compile Include="Assets\Script\GameManager\Destroyer.cs" />
     <Compile Include="Assets\Script\Player\Movements\PlayerRotation.cs" />
     <Compile Include="Assets\Script\Props\ButtonPressed.cs" />
     <Compile Include="Assets\Script\Props\GroundButtonPressed.cs" />
-    <Compile Include="Assets\Prefabs\FailedPortal\Nouveau dossier\PortalTeleporter.cs" />
     <Compile Include="Assets\Script\Utils\StaticMethod.cs" />
     <Compile Include="Assets\Script\Props\Incinerator.cs" />
-    <Compile Include="Assets\Prefabs\SecondTry\Portal.cs" />
     <Compile Include="Assets\Script\Player\Movements\PlayerMovement.cs" />
-    <Compile Include="Assets\Script\Interaction\Interactable.cs" />
+    <Compile Include="Assets\Script\Interaction\Interactor.cs" />
     <Compile Include="Assets\Script\Props\Elevator.cs" />
-    <Compile Include="Assets\Script\Grab\Grabable1.cs" />
     <Compile Include="Assets\Script\Props\CubeSpawner.cs" />
     <Compile Include="Assets\Script\Grab\Grabable.cs" />
     <Compile Include="Assets\Script\GameManager\GameManager.cs" />
     <Compile Include="Assets\Script\Props\Orb.cs" />
-    <Compile Include="Assets\Prefabs\ThirdTry\CameraRendering.cs" />
     <Compile Include="Assets\Script\Props\Shoot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Prefabs\ThirdTry\Portals.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />

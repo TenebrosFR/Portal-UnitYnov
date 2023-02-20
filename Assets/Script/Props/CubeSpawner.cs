@@ -28,11 +28,9 @@ public class CubeSpawner : IsInteractable
         while ( (direction == 1 && door.transform.localScale.x <= 1) || (direction == -1 && door.transform.localScale.x >= 0));
         door.transform.localScale = Vector3.one * target;
         CurrentRoutine = null;
-
     }
     void FixedUpdate() {
         if (!cube) cube = Instantiate(cubePrefab, spawnLocation.position,Quaternion.identity);
         if (continuousDo) Do(gameObject,Vector3.zero);
     }
-
 }

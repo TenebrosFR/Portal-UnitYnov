@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbsorbedOrb : MonoBehaviour
@@ -10,12 +8,15 @@ public class AbsorbedOrb : MonoBehaviour
     [SerializeField] IsInteractable Script;
     [SerializeField] bool autoDesactivate;
     [SerializeField] float DesactivateTime;
+    private Shoot parent;
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer != Mathf.Log(orbLayer, 2)) return;
 
         light.color = Color.blue;
         if(Script && Script.CurrentRoutine == null) Script.Do(other.gameObject,Vector3.zero);
-        other.GetComponent<Orb>().parent.validated = true;
+        parent = other.GetComponent<Orb>().parent;
+        parent.validated = true;
         Destroy(other.gameObject);
     }
 
@@ -27,5 +28,6 @@ public class AbsorbedOrb : MonoBehaviour
         yield return new WaitForSeconds(DesactivateTime);
         light.color = Color.yellow + Color.red;
         Script.UnDo(this.gameObject, Vector3.zero);
+        parent.validated = false;
     }
 }

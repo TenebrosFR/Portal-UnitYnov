@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using utils;
 
@@ -39,7 +38,5 @@ public class ButtonPressed : IsInteractable
         }
         if(Script)Script.UnDo(gameObject, Vector3.zero);
         CurrentRoutine = null;
-
     }
 }
-

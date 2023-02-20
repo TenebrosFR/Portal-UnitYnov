@@ -28,12 +28,10 @@ public class Door : IsInteractable {
             } while (LeftDoor.localPosition != LeftClose.localPosition || RightDoor.localPosition != RightClose.localPosition);
         }else {
             do {
-                Debug.Log("here");
                 LeftDoor.localPosition = Vector3.MoveTowards(LeftDoor.localPosition, LeftDoor.localPosition.UpdateAxis(Left.localPosition.x, VectorAxis.X), moveSpeed);
                 RightDoor.localPosition = Vector3.MoveTowards(RightDoor.localPosition, RightDoor.localPosition.UpdateAxis(Right.localPosition.x,VectorAxis.X), moveSpeed);
                 yield return new WaitForFixedUpdate();
             } while (LeftDoor.localPosition != LeftDoor.localPosition.UpdateAxis(Left.localPosition.x, VectorAxis.X) || RightDoor.localPosition.UpdateAxis(Right.localPosition.x, VectorAxis.X) != Right.localPosition);
         }
     }
-
 }

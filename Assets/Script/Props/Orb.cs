@@ -22,4 +22,3 @@ public class Orb  : MonoBehaviour {
         if(rb.velocity.magnitude != Speed) rb.velocity = rb.velocity.normalized * Speed;
     }
 }
-
