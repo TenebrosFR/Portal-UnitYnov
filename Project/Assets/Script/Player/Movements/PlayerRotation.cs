@@ -32,8 +32,7 @@ public class PlayerRotation : MonoBehaviour
     }
 
     public void PortalWantRotation(Transform portalExit, Transform portalEntrance) {
-        transform.rotation = (portalExit.transform.localToWorldMatrix * transform.worldToLocalMatrix * portalEntrance.localToWorldMatrix).rotation * Quaternion.Inverse(transform.rotation) * portalEntrance.rotation;
-        rb.velocity = rb.velocity.magnitude * transform.forward;
+        transform.rotation = (portalExit.transform.localToWorldMatrix * transform.worldToLocalMatrix * portalEntrance.localToWorldMatrix).rotation * Quaternion.Inverse(portalEntrance.rotation) * transform.rotation;
         rotation.y = transform.eulerAngles.y * (9000 / 360);
     }
 }
